@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<GummyBearKingdom.Models.Property>
 
 @{
-    ViewData["Title"] = "Property";
+    ViewData["Title"] = "Product";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -33,8 +33,16 @@
             <td>
                 @Html.DisplayFor(modelProperty => listProperty.Description)
             </td>
+             <td>
+                @Html.ActionLink("Edit", "Edit", new { id = listProperty.PropertyId }) |
+                @Html.ActionLink("Details", "Details", new { id = listProperty.PropertyId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = listProperty.PropertyId })
+            </td>
           </tr>
 
         }
     </table>
-<p>@Html.ActionLink("Back to GummyBearKingdom Products", "Index","Home")</p>
+    <p>
+    @Html.ActionLink("Create New", "Create")
+    </p>
+<p>@Html.ActionLink("Back to list", "Index","Home")</p>

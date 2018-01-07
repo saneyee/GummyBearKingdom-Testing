@@ -18,6 +18,26 @@ namespace GummyBearKingdom.Controllers
             return View(db.Properties.ToList());
         }
 
+        public IActionResult Create()
+        {
+            
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Property property)
+        {
+            db.Properties.Add(property);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Details(int id)
+        {
+            var thisProperty = db.Properties.FirstOrDefault(Properties => Properties.PropertyId == id);
+            return View(thisProperty);
+        }
+
 
     }
 
