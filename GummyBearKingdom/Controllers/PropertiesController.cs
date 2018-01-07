@@ -54,6 +54,21 @@ namespace GummyBearKingdom.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Delete(int id)
+        {
+            var thisProperty = db.Properties.FirstOrDefault(properties => properties.PropertyId == id);
+            return View(thisProperty);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var thisProperty = db.Properties.FirstOrDefault(properties => properties.PropertyId == id);
+            db.Properties.Remove(thisProperty);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
 
 
 
