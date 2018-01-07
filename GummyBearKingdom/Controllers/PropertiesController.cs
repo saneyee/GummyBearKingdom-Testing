@@ -18,6 +18,12 @@ namespace GummyBearKingdom.Controllers
             return View(db.Properties.ToList());
         }
 
+        public IActionResult Details(int id)
+        {
+            var thisProperty = db.Properties.FirstOrDefault(Properties => Properties.PropertyId == id);
+            return View(thisProperty);
+        }
+
         public IActionResult Create()
         {
             
@@ -32,11 +38,7 @@ namespace GummyBearKingdom.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Details(int id)
-        {
-            var thisProperty = db.Properties.FirstOrDefault(Properties => Properties.PropertyId == id);
-            return View(thisProperty);
-        }
+
 
 
     }
