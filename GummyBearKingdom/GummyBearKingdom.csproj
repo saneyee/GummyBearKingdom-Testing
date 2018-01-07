@@ -27,4 +27,9 @@
     <ItemGroup>
       <Folder Include="Models\" />
     </ItemGroup>
+    <ItemGroup>
+      <Compile Remove="Migrations\20180107202623_InitialDb.Designer.cs" />
+      <Compile Remove="Migrations\20180107202623_InitialDb.cs" />
+      <Compile Remove="Migrations\GummyBearKingdomDbContextModelSnapshot.cs" />
+    </ItemGroup>
 </Project>

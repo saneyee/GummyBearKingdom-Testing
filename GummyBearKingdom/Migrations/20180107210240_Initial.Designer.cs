@@ -7,9 +7,9 @@ using GummyBearKingdom.Models;
 
 namespace GummyBearKingdom.Migrations
 {
-    [DbContext(typeof(GummyBearKingdomContext))]
-    [Migration("20180107202623_InitialDb")]
-    partial class InitialDb
+    [DbContext(typeof(GummyBearKingdomDbContext))]
+    [Migration("20180107210240_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
