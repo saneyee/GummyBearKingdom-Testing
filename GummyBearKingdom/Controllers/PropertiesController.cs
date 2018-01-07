@@ -9,13 +9,16 @@ using GummyBearKingdom.Models;
 
 namespace GummyBearKingdom.Controllers
 {
-    public class ProductsController : Controller
+    public class PropertiesController : Controller
     {
         private GummyBearKingdomDbContext db = new GummyBearKingdomDbContext();
+
         public IActionResult Index()
         {
-            return View();
+            return View(db.Properties.ToList());
         }
+
+
     }
 
 }

@@ -26,6 +26,7 @@
 
     <ItemGroup>
       <Folder Include="Models\" />
+      <Folder Include="Views\Properties\" />
     </ItemGroup>
     <ItemGroup>
       <Compile Remove="Migrations\20180107202623_InitialDb.Designer.cs" />
