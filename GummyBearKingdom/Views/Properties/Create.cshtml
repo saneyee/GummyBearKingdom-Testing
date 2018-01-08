@@ -1,9 +1,11 @@
-﻿@model GummyBearKingdom.Models.Property>
+﻿@model GummyBearKingdom.Models.Property
 
 @{
     ViewData["Title"] = "Product - Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
 
 <h2>Create a new product</h2>
 <hr />
@@ -18,7 +20,6 @@
 
     @Html.LabelFor(model => model.Description)
     @Html.EditorFor(model => model.Description)
-
 
 
     <input type="submit" value="Create" class="btn btn-default" />

@@ -20,7 +20,7 @@ namespace GummyBearKingdom.Migrations
                     b.Property<int>("PropertyId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Cost");
+                    b.Property<int>("Cost");
 
                     b.Property<string>("Description");
 

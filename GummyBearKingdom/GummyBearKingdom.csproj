@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
-    <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,13 +23,9 @@
          <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0" />
       </ItemGroup>
 
+    
+
     <ItemGroup>
-      <Folder Include="Models\" />
-      <Folder Include="Views\Properties\" />
-    </ItemGroup>
-    <ItemGroup>
-      <Compile Remove="Migrations\20180107202623_InitialDb.Designer.cs" />
-      <Compile Remove="Migrations\20180107202623_InitialDb.cs" />
-      <Compile Remove="Migrations\GummyBearKingdomDbContextModelSnapshot.cs" />
+      <Folder Include="Views\Home\" />
     </ItemGroup>
 </Project>

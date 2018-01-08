@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GummyBearKingdom.Migrations
 {
-    public partial class InitialDb : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,7 @@ namespace GummyBearKingdom.Migrations
                 {
                     PropertyId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGeneratedOnAdd", true),
-                    Cost = table.Column<string>(nullable: true),
+                    Cost = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true)
                 },
