@@ -34,18 +34,18 @@ namespace GummyBearKingdom.Tests
             Assert.AreEqual(200, result);
         }
 
-        //[TestMethod]
-        //public void GetSex_ReturnsPropertySex_String()
-        //{
-        //    //Arrange
-        //    var property = new Property();
+        [TestMethod]
+        public void GetDescription_ReturnsPropertyDescription_String()
+        {
+            //Arrange
+            var property = new Property();
 
 
-        //    //Act
-        //    var result = property.Sex = "male";
+            //Act
+            var result = property.Description = "Used in summer";
 
-        //    //Assert
-        //    Assert.AreEqual("male", result);
-        //}
+            //Assert
+            Assert.AreEqual("Used in summer", result);
+        }
     }
 }
