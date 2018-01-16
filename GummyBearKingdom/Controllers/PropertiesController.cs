@@ -31,54 +31,52 @@ namespace GummyBearKingdom.Controllers
             return View(propertyRepo.Properties.ToList());
         }
 
-        //public IActionResult Details(int id)
-        //{
-        //    var thisProperty = propertyRepo.Properties.FirstOrDefault(Properties => Properties.PropertyId == id);
-        //    return View(thisProperty);
-        //}
+        public IActionResult Details(int id)
+        {
+            var thisProperty = propertyRepo.Properties.FirstOrDefault(Properties => Properties.PropertyId == id);
+            return View(thisProperty);
+        }
 
-        //public IActionResult Create()
-        //{
-        //    return View();
-        //}
+        public IActionResult Create()
+        {
+            return View();
+        }
 
-        //[HttpPost]
-        //public IActionResult Create(Property property)
-        //{
-        //    propertyRepo.Properties.Add(property);
-        //    propertyRepo.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
+        [HttpPost]
+        public IActionResult Create(Property property)
+        {
+            propertyRepo.Save(property);
+            return RedirectToAction("Index");
+        }
 
-        //public IActionResult Edit(int id)
-        //{
-        //    var thisProperty = propertyRepo.Properties.FirstOrDefault(properties => properties.PropertyId == id);
+        public IActionResult Edit(int id)
+        {
+            var thisProperty = propertyRepo.Properties.FirstOrDefault(properties => properties.PropertyId == id);
 
-        //    return View(thisProperty);
-        //}
+            return View(thisProperty);
+        }
 
-        //[HttpPost]
-        //public IActionResult Edit(Property property)
-        //{
-        //    propertyRepo.Entry(property).State = EntityState.Modified;
-        //    propertyRepo.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
+        [HttpPost]
+        public IActionResult Edit(Property property)
+        {
+            propertyRepo.Edit(property);
+            return RedirectToAction("Index");
+        }
 
-        //public ActionResult Delete(int id)
-        //{
-        //    var thisProperty = propertyRepo.Properties.FirstOrDefault(properties => properties.PropertyId == id);
-        //    return View(thisProperty);
-        //}
+        public ActionResult Delete(int id)
+        {
+            var thisProperty = propertyRepo.Properties.FirstOrDefault(properties => properties.PropertyId == id);
+            return View(thisProperty);
+        }
 
-        //[HttpPost, ActionName("Delete")]
-        //public IActionResult DeleteConfirmed(int id)
-        //{
-        //    var thisProperty = propertyRepo.Properties.FirstOrDefault(properties => properties.PropertyId == id);
-        //    propertyRepo.Properties.Remove(thisProperty);
-        //    propertyRepo.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var thisProperty = propertyRepo.Properties.FirstOrDefault(properties => properties.PropertyId == id);
+            propertyRepo.Properties.Remove(thisProperty);
+            propertyRepo.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
 
 
