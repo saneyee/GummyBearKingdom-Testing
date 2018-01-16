@@ -1,7 +1,11 @@
 ﻿using System;
-
-
-
+using System.Linq;
+using GummyBearKingdom.Controllers;
+using GummyBearKingdom.Models;
+using GummyBearKingdom.Models.Repositories;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace GummyBearKingdom.Tests.ControllerTests
 {
@@ -18,6 +22,20 @@ namespace GummyBearKingdom.Tests.ControllerTests
                 new Property {PropertyId = 2, Name= "Bed", Cost = 300, Description = "King", ReviewId = 2},
                 new Property {PropertyId = 3, Name= "Chair", Cost = 400, Description = "Folding", ReviewId = 1},
             }.AsQueryable());
+        }
+
+        [TestMethod]
+        public void Mock_GetViewResultIndex_ActionResult() // Confirms route returns view
+        {
+            //Arrange
+            DbSetup();
+            PropertiesController controller = new PropertiesController(mock.Object);
+
+            //Act
+            var result = controller.Index();
+
+            //Assert
+            Assert.IsInstanceOfType(result, typeof(ActionResult));
         }
         
     }
