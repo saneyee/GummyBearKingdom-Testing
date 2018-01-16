@@ -52,6 +52,27 @@ namespace GummyBearKingdom.Tests.ControllerTests
             // Assert
             Assert.IsInstanceOfType(result, typeof(List<Property>));
         }
+
+        [TestMethod]
+        public void Mock_IndexModelContainsProperties_Collection() // Confirms presence of known entry
+        {
+            // Arrange
+            DbSetup();
+            PropertiesController controller = new PropertiesController(mock.Object);
+            Property testProperty = new Property();
+            testProperty.Name = "Sofa";
+            testProperty.Cost = 200;
+            testProperty.Description = "Comfortable";
+            testProperty.ReviewId = 1;
+            testProperty.PropertyId = 1;
+
+            // Act
+            ViewResult indexView = controller.Index() as ViewResult;
+            List<Property> collection = indexView.ViewData.Model as List<Property>;
+
+            // Assert
+            CollectionAssert.Contains(collection, testProperty);
+        }
         
     }
 }
