@@ -15,6 +15,8 @@ namespace GummyBearKingdom.Tests.ControllerTests
     {
         Mock<IPropertyRepository> mock = new Mock<IPropertyRepository>();
 
+        EFPropertyRepository db = new EFPropertyRepository(new TestDbContext());
+
         private void DbSetup()
         {
             mock.Setup(m => m.Properties).Returns(new Property[]
