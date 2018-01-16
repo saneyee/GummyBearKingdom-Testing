@@ -20,19 +20,19 @@ namespace GummyBearKingdom.Tests
             Assert.AreEqual("Fan", result);
         }
 
-        //[TestMethod]
-        //public void GetSpecies_ReturnsPropertySpecies_String()
-        //{
-        //    //Arrange
-        //    var property = new Property();
+        [TestMethod]
+        public void GetCost_ReturnsPropertyCost_Int()
+        {
+            //Arrange
+            var property = new Property();
 
 
-        //    //Act
-        //    var result = property.Species = "carnivore";
+            //Act
+            var result = property.Cost = 200;
 
-        //    //Assert
-        //    Assert.AreEqual("carnivore", result);
-        //}
+            //Assert
+            Assert.AreEqual(200, result);
+        }
 
         //[TestMethod]
         //public void GetSex_ReturnsPropertySex_String()
