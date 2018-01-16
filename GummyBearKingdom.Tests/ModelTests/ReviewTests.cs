@@ -20,19 +20,19 @@ namespace GummyBearKingdom.Tests
             Assert.AreEqual("Edd", result);
         }
 
-        //[TestMethod]
-        //public void GetCost_ReturnsReviewCost_Int()
-        //{
-        //    //Arrange
-        //    var review = new Review();
+        [TestMethod]
+        public void GetContent_ReturnsReviewContent_String()
+        {
+            //Arrange
+            var review = new Review();
 
 
-        //    //Act
-        //    var result = review.Cost = 200;
+            //Act
+            var result = review.Content = "Very good";
 
-        //    //Assert
-        //    Assert.AreEqual(200, result);
-        //}
+            //Assert
+            Assert.AreEqual("Very good", result);
+        }
 
         //[TestMethod]
         //public void GetDescription_ReturnsReviewDescription_String()
