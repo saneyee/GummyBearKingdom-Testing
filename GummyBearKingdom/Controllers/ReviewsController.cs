@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using GummyBearKingdom.Models;
 using GummyBearKingdom.Models.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -33,12 +34,13 @@ namespace GummyBearKingdom.Controllers
 
         public IActionResult Details(int id)
         {
-            Review thisReview = reviewRepo.Reviews.FirstOrDefault(Reviews => Reviews.ReviewId == id);
+            Review thisReview = reviewRepo.Reviews.FirstOrDefault(reviews => reviews.ReviewId == id);
             return View(thisReview);
         }
 
         public IActionResult Create()
         {
+
             return View();
         }
 
@@ -51,8 +53,7 @@ namespace GummyBearKingdom.Controllers
 
         public IActionResult Edit(int id)
         {
-            Review thisReview = reviewRepo.Reviews.FirstOrDefault(properties => properties.ReviewId == id);
-
+            Review thisReview = reviewRepo.Reviews.FirstOrDefault(reviews => reviews.ReviewId == id);
             return View(thisReview);
         }
 
@@ -65,14 +66,14 @@ namespace GummyBearKingdom.Controllers
 
         public ActionResult Delete(int id)
         {
-            Review thisReview = reviewRepo.Reviews.FirstOrDefault(properties => properties.ReviewId == id);
+            Review thisReview = reviewRepo.Reviews.FirstOrDefault(reviews => reviews.ReviewId == id);
             return View(thisReview);
         }
 
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteConfirmed(int id)
         {
-            Review thisReview = reviewRepo.Reviews.FirstOrDefault(properties => properties.ReviewId == id);
+            Review thisReview = reviewRepo.Reviews.FirstOrDefault(reviews => reviews.ReviewId == id);
             reviewRepo.Remove(thisReview);
             return RedirectToAction("Index");
         }

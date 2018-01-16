@@ -12,7 +12,9 @@ namespace GummyBearKingdom.Controllers
 {
     public class PropertiesController : Controller
     {
-        private IPropertyRepository propertyRepo;  // New!
+        private IPropertyRepository propertyRepo; 
+        // New!
+        private GummyBearKingdomDbContext db = new GummyBearKingdomDbContext();
 
         public PropertiesController(IPropertyRepository repo = null)
         {
@@ -28,17 +30,18 @@ namespace GummyBearKingdom.Controllers
 
         public IActionResult Index()
         {
-            return View(propertyRepo.Properties.ToList());
+            return View(propertyRepo.Properties.Include(properties => properties.Review).ToList());
         }
 
         public IActionResult Details(int id)
         {
-            Property thisProperty = propertyRepo.Properties.FirstOrDefault(Properties => Properties.PropertyId == id);
+            Property thisProperty = propertyRepo.Properties.FirstOrDefault(properties => properties.PropertyId == id);
             return View(thisProperty);
         }
 
         public IActionResult Create()
         {
+            ViewBag.ReviewId = new SelectList(db.Reviews, "ReviewId", "Content");
             return View();
         }
 
@@ -52,7 +55,7 @@ namespace GummyBearKingdom.Controllers
         public IActionResult Edit(int id)
         {
             Property thisProperty = propertyRepo.Properties.FirstOrDefault(properties => properties.PropertyId == id);
-
+            ViewBag.ReviewId = new SelectList(db.Reviews, "ReviewId", "Content");
             return View(thisProperty);
         }
 

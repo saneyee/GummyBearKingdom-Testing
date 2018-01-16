@@ -18,6 +18,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Review.Content)
+        </th>
     </tr>
   
     
@@ -28,10 +31,13 @@
                 @Html.DisplayFor(modelProperty => listProperty.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelProperty => listProperty.Cost)
+                $@Html.DisplayFor(modelProperty => listProperty.Cost)
             </td>
             <td>
                 @Html.DisplayFor(modelProperty => listProperty.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelProperty => listProperty.Review.Content)
             </td>
              <td>
                 @Html.ActionLink("Edit", "Edit", new { id = listProperty.PropertyId }) |
