@@ -13,7 +13,7 @@ using Moq;
 namespace GummyBearKingdom.Tests.ControllerTests
 {
     [TestClass]
-    public class ReviewsControllerTests
+    public class ReviewsControllerTests : IDisposable
     {
         Mock<IReviewRepository> mock = new Mock<IReviewRepository>();
 
@@ -140,10 +140,10 @@ namespace GummyBearKingdom.Tests.ControllerTests
             CollectionAssert.Contains(collection, testReview);
         }
 
-        //public void Dispose()
-        //{
-        //    db.DeleteAll();
-        //}
+        public void Dispose()
+        {
+            db.DeleteAll();
+        }
 
     }
 }

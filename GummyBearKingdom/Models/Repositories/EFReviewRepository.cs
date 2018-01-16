@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
@@ -38,6 +39,13 @@ namespace GummyBearKingdom.Models.Repositories
         public void Remove(Review review)
         {
             db.Reviews.Remove(review);
+            db.SaveChanges();
+        }
+
+        public void DeleteAll()
+        {
+            List<Review> AllReviews = db.Reviews.ToList();
+            db.Reviews.RemoveRange(AllReviews);
             db.SaveChanges();
         }
 
