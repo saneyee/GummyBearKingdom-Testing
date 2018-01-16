@@ -12,7 +12,7 @@ using Moq;
 namespace GummyBearKingdom.Tests.ControllerTests
 {
     [TestClass]
-    public class PropertiesControllerTests : IDisposable
+    public class PropertiesControllerTests
     {
         Mock<IPropertyRepository> mock = new Mock<IPropertyRepository>();
 
@@ -123,7 +123,7 @@ namespace GummyBearKingdom.Tests.ControllerTests
         }
 
         [TestMethod]
-        public void DB_CreatesNewEntries_Collection()
+        public void DB_CreatesNewProperties_Collection()
         {
             // Arrange
             PropertiesController controller = new PropertiesController(db);
@@ -131,7 +131,7 @@ namespace GummyBearKingdom.Tests.ControllerTests
             testProperty.Name = "TestDb Property";
             testProperty.Cost = 400;
             testProperty.Description = "Big";
-            testProperty.ReviewId = 3;
+            testProperty.ReviewId = 6;
 
             // Act
             controller.Create(testProperty);
@@ -141,10 +141,10 @@ namespace GummyBearKingdom.Tests.ControllerTests
             CollectionAssert.Contains(collection, testProperty);
         }
 
-        public void Dispose()
-        {
-            db.DeleteAll();
-        }
+        //public void Dispose()
+        //{
+        //    db.DeleteAll();
+        //}
         
     }
 }

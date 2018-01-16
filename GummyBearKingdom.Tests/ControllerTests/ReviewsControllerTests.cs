@@ -4,6 +4,7 @@ using System.Linq;
 using GummyBearKingdom.Controllers;
 using GummyBearKingdom.Models;
 using GummyBearKingdom.Models.Repositories;
+using GummyBearKingdom.Tests.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -15,6 +16,8 @@ namespace GummyBearKingdom.Tests.ControllerTests
     public class ReviewsControllerTests
     {
         Mock<IReviewRepository> mock = new Mock<IReviewRepository>();
+
+        EFReviewRepository db = new EFReviewRepository(new TestDbContext());
 
         private void DbSetup()
         {
@@ -117,6 +120,30 @@ namespace GummyBearKingdom.Tests.ControllerTests
             Assert.IsInstanceOfType(resultView, typeof(ViewResult));
             Assert.IsInstanceOfType(model, typeof(Review));
         }
+
+        [TestMethod]
+        public void DB_CreatesNewReviews_Collection()
+        {
+            // Arrange
+            ReviewsController controller = new ReviewsController(db);
+            Review testReview = new Review();
+            testReview.Author = "TestDb Review";
+            testReview.Content = "Good";
+            testReview.Rating = 4;
+
+
+            // Act
+            controller.Create(testReview);
+            var collection = (controller.Index() as ViewResult).ViewData.Model as List<Review>;
+
+            // Assert
+            CollectionAssert.Contains(collection, testReview);
+        }
+
+        //public void Dispose()
+        //{
+        //    db.DeleteAll();
+        //}
 
     }
 }
