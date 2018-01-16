@@ -4,6 +4,7 @@ using System.Linq;
 using GummyBearKingdom.Controllers;
 using GummyBearKingdom.Models;
 using GummyBearKingdom.Models.Repositories;
+using GummyBearKingdom.Tests.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -16,6 +17,7 @@ namespace GummyBearKingdom.Tests.ControllerTests
         Mock<IPropertyRepository> mock = new Mock<IPropertyRepository>();
 
         EFPropertyRepository db = new EFPropertyRepository(new TestDbContext());
+
 
         private void DbSetup()
         {
@@ -118,6 +120,25 @@ namespace GummyBearKingdom.Tests.ControllerTests
             // Assert
             Assert.IsInstanceOfType(resultView, typeof(ViewResult));
             Assert.IsInstanceOfType(model, typeof(Property));
+        }
+
+        [TestMethod]
+        public void DB_CreatesNewEntries_Collection()
+        {
+            // Arrange
+            PropertiesController controller = new PropertiesController(db);
+            Property testProperty = new Property();
+            testProperty.Name = "TestDb Property";
+            testProperty.Cost = 400;
+            testProperty.Description = "Big";
+            testProperty.ReviewId = 3;
+
+            // Act
+            controller.Create(testProperty);
+            var collection = (controller.Index() as ViewResult).ViewData.Model as List<Property>;
+
+            // Assert
+            CollectionAssert.Contains(collection, testProperty);
         }
         
     }
