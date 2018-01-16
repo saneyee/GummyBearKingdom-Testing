@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using GummyBearKingdom.Controllers;
 using GummyBearKingdom.Models;
@@ -36,6 +37,20 @@ namespace GummyBearKingdom.Tests.ControllerTests
 
             //Assert
             Assert.IsInstanceOfType(result, typeof(ActionResult));
+        }
+
+        [TestMethod]
+        public void Mock_IndexContainsModelData_List() // Confirms model as list of properties
+        {
+            // Arrange
+            DbSetup();
+            ViewResult indexView = new PropertiesController(mock.Object).Index() as ViewResult;
+
+            // Act
+            var result = indexView.ViewData.Model;
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(List<Property>));
         }
         
     }
