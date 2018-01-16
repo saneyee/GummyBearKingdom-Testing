@@ -95,6 +95,28 @@ namespace GummyBearKingdom.Tests.ControllerTests
             Assert.IsInstanceOfType(resultView, typeof(ViewResult));
 
         }
+
+        [TestMethod]
+        public void Mock_GetDetails_ReturnsView()
+        {
+            // Arrange
+            Property testProperty = new Property
+            {
+                PropertyId = 4,
+                Name = "Drawer"
+            };
+
+            DbSetup();
+            PropertiesController controller = new PropertiesController(mock.Object);
+
+            // Act
+            var resultView = controller.Details(testProperty.PropertyId) as ViewResult;
+            var model = resultView.ViewData.Model as Property;
+
+            // Assert
+            Assert.IsInstanceOfType(resultView, typeof(ViewResult));
+            Assert.IsInstanceOfType(model, typeof(Property));
+        }
         
     }
 }
