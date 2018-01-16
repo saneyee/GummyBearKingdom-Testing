@@ -1,0 +1,27 @@
+﻿@model GummyBearKingdom.Models.Review
+
+@{
+    ViewData["Title"] = "Review - Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Edit</h2>
+<hr />
+<h4>Edit this Review: @Html.DisplayFor(model => model.Author)</h4>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.ReviewId)
+
+    @Html.LabelFor(model => model.Author)
+    @Html.EditorFor(model => model.Author)
+
+    @Html.LabelFor(model => model.Content)
+    @Html.EditorFor(model => model.Content)
+
+    @Html.LabelFor(model => model.Rating)
+    @Html.EditorFor(model => model.Rating)
+
+
+
+    <input type="submit" value="Save" class="btn btn-default" />
+}
+@Html.ActionLink("Back to Review List", "Index")
