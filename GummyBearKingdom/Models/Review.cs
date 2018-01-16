@@ -20,7 +20,10 @@ namespace GummyBearKingdom.Models
         public int Rating { get; set; }
         public virtual ICollection<Property> Properties { get; set; }
        
-
+        public Review()
+        {
+            this.Properties = new HashSet<Property>();
+        }
 
 
         public override bool Equals(System.Object otherReview)

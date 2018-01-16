@@ -1,0 +1,15 @@
+﻿@model GummyBearKingdom.Models.Review
+
+@{
+    ViewData["Title"] = "Review - Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Review Details</h2>
+<hr />
+
+<p>@Html.DisplayNameFor(model => model.Author): @Html.DisplayFor(model => model.Author)</p>
+<p>@Html.DisplayNameFor(model => model.Content): @Html.DisplayFor(model => model.Content)</p>
+<p>@Html.DisplayNameFor(model => model.Rating): @Html.DisplayFor(model => model.Rating)</p>
+<p>@Html.DisplayNameFor(model => model.ReviewId) : @Html.DisplayFor(model => model.ReviewId)</p>
+
+<p>@Html.ActionLink("Back to Category List", "Index")</p>
