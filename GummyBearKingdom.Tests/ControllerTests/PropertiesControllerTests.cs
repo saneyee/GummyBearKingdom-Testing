@@ -73,6 +73,28 @@ namespace GummyBearKingdom.Tests.ControllerTests
             // Assert
             CollectionAssert.Contains(collection, testProperty);
         }
+
+        [TestMethod]
+        public void Mock_PostViewResultCreate_ViewResult()
+        {
+            // Arrange
+            Property testProperty = new Property
+            {
+                PropertyId = 4,
+                Name = "Drawer"
+            };
+
+            DbSetup();
+            PropertiesController controller = new PropertiesController(mock.Object);
+
+            // Act
+            var resultView = controller.Create(testProperty) as ViewResult;
+
+
+            // Assert
+            Assert.IsInstanceOfType(resultView, typeof(ViewResult));
+
+        }
         
     }
 }
