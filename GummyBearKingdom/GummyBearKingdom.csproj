@@ -27,5 +27,6 @@
 
     <ItemGroup>
       <Folder Include="Views\Home\" />
+      <Folder Include="Models\Repositories\" />
     </ItemGroup>
 </Project>
