@@ -48,7 +48,7 @@ namespace GummyBearKingdom.Migrations
 
                     b.HasKey("ReviewId");
 
-                    b.ToTable("Review");
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("GummyBearKingdom.Models.Property", b =>

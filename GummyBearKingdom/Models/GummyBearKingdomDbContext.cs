@@ -12,7 +12,8 @@ namespace GummyBearKingdom.Models
         }
 
 
-        public DbSet<Property> Properties { get; set; }
+        public virtual DbSet<Property> Properties { get; set; }
+        public virtual DbSet<Review> Reviews { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {

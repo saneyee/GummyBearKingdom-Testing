@@ -8,8 +8,8 @@ using GummyBearKingdom.Models;
 namespace GummyBearKingdom.Migrations
 {
     [DbContext(typeof(GummyBearKingdomDbContext))]
-    [Migration("20180116001331_ReviewModel")]
-    partial class ReviewModel
+    [Migration("20180116025839_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -49,7 +49,7 @@ namespace GummyBearKingdom.Migrations
 
                     b.HasKey("ReviewId");
 
-                    b.ToTable("Review");
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("GummyBearKingdom.Models.Property", b =>
