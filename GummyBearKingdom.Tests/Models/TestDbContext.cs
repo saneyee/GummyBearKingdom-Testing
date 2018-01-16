@@ -8,6 +8,7 @@ namespace GummyBearKingdom.Tests.Models
     public class TestDbContext : GummyBearKingdomDbContext
     {
         public override DbSet<Property> Properties { get; set; }
+        public override DbSet<Review> Reviews { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {

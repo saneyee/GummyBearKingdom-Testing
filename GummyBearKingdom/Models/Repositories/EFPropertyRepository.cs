@@ -6,7 +6,16 @@ namespace GummyBearKingdom.Models.Repositories
 {
     public class EFPropertyRepository : IPropertyRepository
     {
-        GummyBearKingdomDbContext db = new GummyBearKingdomDbContext();
+        GummyBearKingdomDbContext db;
+
+        public EFPropertyRepository()
+        {
+            db = new GummyBearKingdomDbContext();
+        }
+        public EFPropertyRepository(GummyBearKingdomDbContext thisDb)
+        {
+            db = thisDb;
+        }
 
         public IQueryable<Property> Properties
         { get { return db.Properties; } }
