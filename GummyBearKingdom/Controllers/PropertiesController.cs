@@ -6,68 +6,79 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using GummyBearKingdom.Models;
 using Microsoft.EntityFrameworkCore;
-
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using GummyBearKingdom.Models.Repositories;
 
 namespace GummyBearKingdom.Controllers
 {
     public class PropertiesController : Controller
     {
-        private GummyBearKingdomDbContext db = new GummyBearKingdomDbContext();
+        private IPropertyRepository propertyRepo;  // New!
+
+        public PropertiesController(IPropertyRepository repo = null)
+        {
+            if (repo == null)
+            {
+                this.propertyRepo = new EFPropertyRepository();
+            }
+            else
+            {
+                this.propertyRepo = repo;
+            }
+        }
 
         public IActionResult Index()
         {
-            return View(db.Properties.ToList());
+            return View(propertyRepo.Properties.ToList());
         }
 
-        public IActionResult Details(int id)
-        {
-            var thisProperty = db.Properties.FirstOrDefault(Properties => Properties.PropertyId == id);
-            return View(thisProperty);
-        }
+        //public IActionResult Details(int id)
+        //{
+        //    var thisProperty = propertyRepo.Properties.FirstOrDefault(Properties => Properties.PropertyId == id);
+        //    return View(thisProperty);
+        //}
 
-        public IActionResult Create()
-        {
-            return View();
-        }
+        //public IActionResult Create()
+        //{
+        //    return View();
+        //}
 
-        [HttpPost]
-        public IActionResult Create(Property property)
-        {
-            db.Properties.Add(property);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost]
+        //public IActionResult Create(Property property)
+        //{
+        //    propertyRepo.Properties.Add(property);
+        //    propertyRepo.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
-        public IActionResult Edit(int id)
-        {
-            var thisProperty = db.Properties.FirstOrDefault(properties => properties.PropertyId == id);
+        //public IActionResult Edit(int id)
+        //{
+        //    var thisProperty = propertyRepo.Properties.FirstOrDefault(properties => properties.PropertyId == id);
 
-            return View(thisProperty);
-        }
+        //    return View(thisProperty);
+        //}
 
-        [HttpPost]
-        public IActionResult Edit(Property property)
-        {
-            db.Entry(property).State = EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost]
+        //public IActionResult Edit(Property property)
+        //{
+        //    propertyRepo.Entry(property).State = EntityState.Modified;
+        //    propertyRepo.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
-        public ActionResult Delete(int id)
-        {
-            var thisProperty = db.Properties.FirstOrDefault(properties => properties.PropertyId == id);
-            return View(thisProperty);
-        }
+        //public ActionResult Delete(int id)
+        //{
+        //    var thisProperty = propertyRepo.Properties.FirstOrDefault(properties => properties.PropertyId == id);
+        //    return View(thisProperty);
+        //}
 
-        [HttpPost, ActionName("Delete")]
-        public IActionResult DeleteConfirmed(int id)
-        {
-            var thisProperty = db.Properties.FirstOrDefault(properties => properties.PropertyId == id);
-            db.Properties.Remove(thisProperty);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost, ActionName("Delete")]
+        //public IActionResult DeleteConfirmed(int id)
+        //{
+        //    var thisProperty = propertyRepo.Properties.FirstOrDefault(properties => properties.PropertyId == id);
+        //    propertyRepo.Properties.Remove(thisProperty);
+        //    propertyRepo.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
 
 
