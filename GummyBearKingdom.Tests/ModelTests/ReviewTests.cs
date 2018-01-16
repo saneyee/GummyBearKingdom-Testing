@@ -34,18 +34,18 @@ namespace GummyBearKingdom.Tests
             Assert.AreEqual("Very good", result);
         }
 
-        //[TestMethod]
-        //public void GetDescription_ReturnsReviewDescription_String()
-        //{
-        //    //Arrange
-        //    var review = new Review();
+        [TestMethod]
+        public void GetRating_ReturnsReviewRating_Int()
+        {
+            //Arrange
+            var review = new Review();
 
 
-        //    //Act
-        //    var result = review.Description = "Used in summer";
+            //Act
+            var result = review.Rating = 3;
 
-        //    //Assert
-        //    Assert.AreEqual("Used in summer", result);
-        //}
+            //Assert
+            Assert.AreEqual(3, result);
+        }
     }
 }
