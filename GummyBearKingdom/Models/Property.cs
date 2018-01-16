@@ -14,6 +14,8 @@ namespace GummyBearKingdom.Models
         public string Name { get; set; }
         public int Cost { get; set; }
         public string Description { get; set; }
+        public int ReviewId { get; set; }
+        public virtual Review Review { get; set; }
 
     }
 
