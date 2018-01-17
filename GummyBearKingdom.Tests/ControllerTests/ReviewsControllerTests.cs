@@ -23,9 +23,9 @@ namespace GummyBearKingdom.Tests.ControllerTests
         {
             mock.Setup(m => m.Reviews).Returns(new Review[]
             {
-                new Review {ReviewId = 1, Author= "Soma", Content = "Good", Rating = 2},
-                new Review {ReviewId = 2, Author= "Berry", Content = "Bad", Rating = 5},
-                new Review {ReviewId = 3, Author= "Chainy", Content = "Costly", Rating = 3},
+                new Review {ReviewId = 1, Author= "Soma", Content = "Good",PropertyId = 2, Rating = 2},
+                new Review {ReviewId = 2, Author= "Berry", Content = "Bad",PropertyId = 3, Rating = 5},
+                new Review {ReviewId = 3, Author= "Chainy", Content = "Costly",PropertyId = 4, Rating = 3},
             }.AsQueryable());
         }
 
@@ -68,7 +68,7 @@ namespace GummyBearKingdom.Tests.ControllerTests
             testReview.Content = "Good";
             testReview.Rating = 2;
             testReview.ReviewId = 1;
-
+            testReview.PropertyId = 2;
             // Act
             ViewResult indexView = controller.Index() as ViewResult;
             List<Review> collection = indexView.ViewData.Model as List<Review>;
@@ -130,7 +130,7 @@ namespace GummyBearKingdom.Tests.ControllerTests
             testReview.Author = "TestDb Review";
             testReview.Content = "Good";
             testReview.Rating = 4;
-
+            testReview.PropertyId = 8;
 
             // Act
             controller.Create(testReview);

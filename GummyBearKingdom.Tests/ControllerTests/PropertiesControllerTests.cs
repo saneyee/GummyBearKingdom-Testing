@@ -23,9 +23,9 @@ namespace GummyBearKingdom.Tests.ControllerTests
         {
             mock.Setup(m => m.Properties).Returns(new Property[]
             {
-                new Property {PropertyId = 1, Name= "Sofa", Cost = 200, Description = "Comfortable", ReviewId = 1},
-                new Property {PropertyId = 2, Name= "Bed", Cost = 300, Description = "King", ReviewId = 2},
-                new Property {PropertyId = 3, Name= "Chair", Cost = 400, Description = "Folding", ReviewId = 1},
+                new Property {PropertyId = 1, Name= "Sofa", Cost = 200, Description = "Comfortable"},
+                new Property {PropertyId = 2, Name= "Bed", Cost = 300, Description = "King"},
+                new Property {PropertyId = 3, Name= "Chair", Cost = 400, Description = "Folding"},
             }.AsQueryable());
         }
 
@@ -67,7 +67,6 @@ namespace GummyBearKingdom.Tests.ControllerTests
             testProperty.Name = "Sofa";
             testProperty.Cost = 200;
             testProperty.Description = "Comfortable";
-            testProperty.ReviewId = 1;
             testProperty.PropertyId = 1;
 
             // Act
@@ -131,7 +130,6 @@ namespace GummyBearKingdom.Tests.ControllerTests
             testProperty.Name = "TestDb Property";
             testProperty.Cost = 400;
             testProperty.Description = "Big";
-            testProperty.ReviewId = 6;
 
             // Act
             controller.Create(testProperty);
