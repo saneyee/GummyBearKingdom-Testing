@@ -21,7 +21,8 @@ namespace GummyBearKingdom.Models
         public int PropertyId { get; set; }
         public virtual Property Property { get; set; }
 
-
+		//public static List<Review> allReviews = new List<Review>();
+		
 
 
         public override bool Equals(System.Object otherReview)

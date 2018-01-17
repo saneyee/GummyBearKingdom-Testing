@@ -20,8 +20,46 @@ namespace GummyBearKingdom.Models
         {
             this.Reviews = new HashSet<Review>();
         }
+		
 
-        public override bool Equals(System.Object otherProperty)
+		public double AverageRating()
+		{
+			if (Reviews.Count > 0)
+			{
+                return (Reviews.Sum(review => review.Rating) /(double)Reviews.Count());
+
+			}
+			else
+			{
+				return 0;
+			}
+		}
+
+		      //public double AverageRating()
+		      //{
+		      //    double rating = 0;
+		      //    double totRating = 0;
+
+		      //    if (Reviews != null)
+		      //    {
+		      //        int totReview = Reviews.Count;
+
+		      //        foreach (var review in Reviews)
+		      //        {
+        //            totRating = totRating + review.Rating;
+		      //        }
+		      //        rating = totRating / totReview;
+		      //    }
+
+		      //    return rating;
+
+		      //}
+		
+
+
+		
+
+		public override bool Equals(System.Object otherProperty)
         {
             if (!(otherProperty is Property))
             {

@@ -35,7 +35,7 @@ namespace GummyBearKingdom.Controllers
 
         public IActionResult Details(int id)
         {
-            Property thisProperty = propertyRepo.Properties.FirstOrDefault(properties => properties.PropertyId == id);
+            Property thisProperty = propertyRepo.Properties.Include(properties => properties.Reviews).FirstOrDefault(properties => properties.PropertyId == id);
             return View(thisProperty);
         }
 
