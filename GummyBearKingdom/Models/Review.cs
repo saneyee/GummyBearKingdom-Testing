@@ -18,12 +18,10 @@ namespace GummyBearKingdom.Models
         public string Author { get; set; }
         public string Content { get; set; }
         public int Rating { get; set; }
-        public virtual ICollection<Property> Properties { get; set; }
-       
-        public Review()
-        {
-            this.Properties = new HashSet<Property>();
-        }
+        public int PropertyId { get; set; }
+        public virtual Property Property { get; set; }
+
+
 
 
         public override bool Equals(System.Object otherReview)
@@ -39,8 +37,8 @@ namespace GummyBearKingdom.Models
                 bool EqualAuthor = this.Author.Equals(newReview.Author);
                 bool EqualContent = this.Content.Equals(newReview.Content);
                 bool EqualRating = this.Rating.Equals(newReview.Rating);
-
-                return (EqualId && EqualAuthor && EqualContent && EqualRating);
+                bool EqualPropertyId = this.PropertyId.Equals(newReview.PropertyId);
+                return (EqualId && EqualAuthor && EqualContent && EqualRating && EqualPropertyId);
             }
         }
 

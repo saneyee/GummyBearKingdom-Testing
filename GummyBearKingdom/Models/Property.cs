@@ -14,10 +14,12 @@ namespace GummyBearKingdom.Models
         public string Name { get; set; }
         public int Cost { get; set; }
         public string Description { get; set; }
-        public int ReviewId { get; set; }
-        public virtual Review Review { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; }
 
-
+        public Property()
+        {
+            this.Reviews = new HashSet<Review>();
+        }
 
         public override bool Equals(System.Object otherProperty)
         {
@@ -32,10 +34,9 @@ namespace GummyBearKingdom.Models
                 bool EqualName = this.Name.Equals(newProperty.Name);
                 bool EqualCost = this.Cost.Equals(newProperty.Cost);
                 bool EqualDescription = this.Description.Equals(newProperty.Description);
-                bool EqualReviewId = this.ReviewId.Equals(newProperty.ReviewId);
 
 
-                return (EqualId && EqualName && EqualCost && EqualDescription && EqualReviewId);
+                return (EqualId && EqualName && EqualCost && EqualDescription);
             }
         }
 
