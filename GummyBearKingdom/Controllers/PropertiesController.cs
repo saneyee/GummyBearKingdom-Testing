@@ -13,7 +13,7 @@ namespace GummyBearKingdom.Controllers
     public class PropertiesController : Controller
     {
         private IPropertyRepository propertyRepo; 
-        // New!
+
        
 
         public PropertiesController(IPropertyRepository repo = null)

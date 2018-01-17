@@ -2,16 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GummyBearKingdom.Models;
+using GummyBearKingdom.Models.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GummyBearKingdom.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: /<controller>/
+
+
+        private GummyBearKingdomDbContext db = new GummyBearKingdomDbContext();
+
         public IActionResult Index()
         {
-            return View();
+			List<Property> featuredProducts = db.Properties
+												.Include(properties => properties.Reviews)
+												.OrderByDescending(properties => properties
+												.AverageRating())
+												.Take(3)
+                                                .ToList();
+			return View(featuredProducts); ;
         }
         public IActionResult About()
         {
@@ -27,5 +39,7 @@ namespace GummyBearKingdom.Controllers
         {
             return View();
         }
+
+		
     }
 }
