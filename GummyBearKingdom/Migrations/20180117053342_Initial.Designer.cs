@@ -8,7 +8,7 @@ using GummyBearKingdom.Models;
 namespace GummyBearKingdom.Migrations
 {
     [DbContext(typeof(GummyBearKingdomDbContext))]
-    [Migration("20180116025839_Initial")]
+    [Migration("20180117053342_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,11 +27,7 @@ namespace GummyBearKingdom.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("ReviewId");
-
                     b.HasKey("PropertyId");
-
-                    b.HasIndex("ReviewId");
 
                     b.ToTable("Properties");
                 });
@@ -45,18 +41,22 @@ namespace GummyBearKingdom.Migrations
 
                     b.Property<string>("Content");
 
+                    b.Property<int>("PropertyId");
+
                     b.Property<int>("Rating");
 
                     b.HasKey("ReviewId");
 
+                    b.HasIndex("PropertyId");
+
                     b.ToTable("Reviews");
                 });
 
-            modelBuilder.Entity("GummyBearKingdom.Models.Property", b =>
+            modelBuilder.Entity("GummyBearKingdom.Models.Review", b =>
                 {
-                    b.HasOne("GummyBearKingdom.Models.Review", "Review")
-                        .WithMany("Properties")
-                        .HasForeignKey("ReviewId")
+                    b.HasOne("GummyBearKingdom.Models.Property", "Property")
+                        .WithMany("Reviews")
+                        .HasForeignKey("PropertyId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
         }
